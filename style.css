@@ -1,9 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
-    font-family: Arial, sans-serif;
+    font-family: Cambria, sans-serif;
     background: linear-gradient(135deg, #ff4e50, #f9d423);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     color: white;
     margin: 0;
     text-align: center;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    max-width: 900px;
+    width: 100%;
+    margin-top: 20px;
 }
 
 h1, h2 {
@@ -34,6 +52,7 @@ button {
 
 button:hover {
     background: #ff1e50;
+    color: green;
 }
 
 ul {
@@ -56,7 +75,7 @@ li {
 }
 
 /* MOBILE */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     section {
         width: 95%;
     }
@@ -70,3 +89,4 @@ li {
         gap: 5px;
     }
 }
+
