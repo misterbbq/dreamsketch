@@ -7,7 +7,6 @@ Site web collaboratif hébergé sur GitHub Pages.
 - Agenda partagé en temps réel
 - Multi-utilisateur anonyme
 - Optimisé mobile
-- Mode développeur caché (CTRL + SHIFT + D)
 
 ## Installation
 1. Créer un projet Firebase
