@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Love Space</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Firebase -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ÉCRAN LOGIN -->
+<div id="login-screen">
+    <h1> Acces restreint </h1>
+    <input type="password" id="passwordInput" placeholder="Mot de passe du jour">
+    <button id="loginBtn">Entrer</button>
+    <p id="error"></p>
+</div>
+
+<!-- APPLICATION -->
+<div id="app" class="hidden">
+    <h1>Dreamsketch</h1>
+
+    <!-- AGENDA -->
+    <section>
+        <h2>📅 Agenda partagé</h2>
+
+        <input type="text" id="eventTitle" placeholder="Titre">
+        <input type="date" id="eventDate">
+        <button id="addEventBtn">Ajouter</button>
+
+        <ul id="agenda"></ul>
+    </section>
+
+    <!-- MODE DEV -->
+    <section id="dev-panel" class="hidden">
+        <h2>🛠️ Mode développeur</h2>
+        <p id="todayPassword"></p>
+        <button id="clearAgenda">Supprimer tout l'agenda</button>
+    </section>
+</div>
+
+</body>
+</html>
