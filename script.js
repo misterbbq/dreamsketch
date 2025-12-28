@@ -83,7 +83,7 @@ function initAgenda() {
 ===================== */
 
 document.addEventListener("keydown", e => {
-    if (e.ctrlKey && e.shiftKey && e.key === "D") {
+    if (e.ctrlKey && e.shiftKey && e.key === "E") {
         document.getElementById("dev-panel").classList.toggle("hidden");
         document.getElementById("todayPassword").innerText =
             "Mot de passe du jour : " + getTodayPassword();
@@ -94,3 +94,4 @@ document.getElementById("clearAgenda").onclick = async () => {
     const snapshot = await getDocs(agendaRef);
     snapshot.forEach(d => deleteDoc(d.ref));
 };
+
