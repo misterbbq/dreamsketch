@@ -52,7 +52,6 @@ button {
 
 button:hover {
     background: #ff1e50;
-    color: green;
 }
 
 ul {
@@ -89,4 +88,5 @@ li {
         gap: 5px;
     }
 }
+
 
