@@ -6,7 +6,7 @@ import {
 
 /* =====================
    MOTS DE PASSE
-===================== */
+===================== 
 
 const PASSWORDS = [
     "amour", "passion", "coeur", "flamme", "desir", "tendresse"
@@ -19,9 +19,9 @@ function getTodayPassword() {
     return PASSWORDS[day % PASSWORDS.length];
 }
 
-/* =====================
+ =====================
    AUTH
-===================== */
+===================== 
 
 document.getElementById("loginBtn").onclick = () => {
     const input = document.getElementById("passwordInput").value;
@@ -35,9 +35,9 @@ document.getElementById("loginBtn").onclick = () => {
     }
 };
 
-/* =====================
+ =====================
    AGENDA
-===================== */
+===================== 
 
 const agendaRef = collection(db, "agenda");
 
@@ -77,8 +77,69 @@ function initAgenda() {
         });
     });
 }
+*/
 
-/* =====================
+
+/* =========================
+   GENERATEUR DE PHRASES
+   ========================= */
+
+const phrases = [
+    "L'amour est dans l'air 🔥",
+    "Un sourire peut tout changer ❤️",
+    "La passion unit les âmes 💫",
+    "Aimer, c'est vibrer 💖",
+    "Deux cœurs, une flamme 🔥"
+];
+
+function generateSentence() {
+    const random = phrases[Math.floor(Math.random() * phrases.length)];
+    document.getElementById("sentence").innerText = random;
+}
+
+/* =========================
+   ETIQUETTES
+   ========================= */
+
+function addTag() {
+    const input = document.getElementById("tagInput");
+    if (!input.value) return;
+
+    const tags = getLocal("tags");
+    tags.push(input.value);
+    setLocal("tags", tags);
+    input.value = "";
+    renderTags();
+}
+
+function renderTags() {
+    const list = document.getElementById("tags");
+    list.innerHTML = "";
+    getLocal("tags").forEach(t => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        list.appendChild(li);
+    });
+}
+
+/* =========================
+   LOCAL STORAGE
+   ========================= */
+
+function getLocal(key) {
+    return JSON.parse(localStorage.getItem(key)) || [];
+}
+
+function setLocal(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+function loadData() {
+    renderAgenda();
+    renderTags();
+}
+
+/*=====================
    MODE DEV
 ===================== */
 
@@ -94,4 +155,5 @@ document.getElementById("clearAgenda").onclick = async () => {
     const snapshot = await getDocs(agendaRef);
     snapshot.forEach(d => deleteDoc(d.ref));
 };
+
 
