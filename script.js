@@ -7,6 +7,57 @@ const phrases = [
     "Avec toi, chaque jour est une nouvelle aventure.",
     "Tu illumines ma vie comme personne d'autre.",
     "Je t'aime plus que tous les mots du monde.",
+    "Te serrer dans mes bras, ne penser plus qu'à toi, je n'attends que ça",
+    "J'aime tracer des runes, la nuit au clair de lune, sur ton desert sans dunes",
+    "Chaque fois que je nous sais éloignés je vois une opportunité de nous retrouver.",
+
+    "Mon coeur pour toi brûleras, et dans mes bras tu seras",
+    
+    "Pour mon petit flocon, j'ai tant d'admiration",
+    
+    "J'aime te contempler et constater ta beauté",
+    
+    "Ce plaisir d'effleurer ta peau, te voir sourir à mes jeux de mots",
+    
+    "Passer du temps avec toi me met en émoi",
+    
+    "Pour se réconforter on sait sur qui compter.",
+    
+    "Sache que tu es désirée pour t'offrir un baiser",
+    
+    "Songer à toi m'emplit de bonheur",
+    
+    "Heureux tous les deux, nous irons jusqu'aux cieux",
+    
+    "Claire, je t'aime du plus profond de mon coeur ❤️",
+    
+    "Bisou, mon oiseau de paradis",
+    
+    "Il suffit de quelques douceurs, une bonne odeur et voilà le bonheur !",
+    
+    "En m'offrant un baiser tu me ramènes dans ton monde de beauté 🥰",
+    
+    "Je sais apprécier la douceur dont tu me gâtes pour rallonger ces heures délicates",
+    
+    "Par la poesie que tu écris, je suis tout attendrit",
+    
+    "Un tant soi peu de caresses me transporte d'allegresse",
+    
+    "Passer ensemble la nuit, même brève, qu'est ce que j'en rêve !",
+    
+    "Comme ma tour eiffel à moi, tu brilles de milles feux même de nuit✨",
+    
+    "Aussi belle qu'une rose, tu fleuris mon esprit 🌹",
+    
+    "Un câlin, un bisou, ou même une balade et mon coeur bat la chamade",
+    
+    "Comme ma tour eiffel à moi, tu brilles de milles feux même de nuit✨",
+    
+    "J'aime vivre à tes cotés et savoir que l'on s'aime",
+    
+    "Je pense très fort à toi, Claire que j'aime de tout mon coeur !",
+    
+
     // Ajoutez vos propres phrases ci-dessous :
     
 ];
