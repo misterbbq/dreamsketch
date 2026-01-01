@@ -56,6 +56,8 @@ const phrases = [
     "J'aime vivre à tes cotés et savoir que l'on s'aime",
     
     "Je pense très fort à toi, Claire que j'aime de tout mon coeur !",
+
+    "Je t'aime"
     
 
     // Ajoutez vos propres phrases ci-dessous :
