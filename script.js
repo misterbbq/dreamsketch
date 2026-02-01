@@ -10,7 +10,7 @@ const phrases = [
     "Te serrer dans mes bras, ne penser plus qu'à toi, je n'attends que ça",
     "J'aime tracer des runes, la nuit au clair de lune, sur ton desert sans dunes",
 
-    "L'amour qu'on se voue mutuellement est un calin de pensée"
+    "L'amour qu'on se voue mutuellement est un calin de pensée",
     
     "Chaque fois que je nous sais éloignés je vois une opportunité de nous retrouver.",
 
