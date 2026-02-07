@@ -151,24 +151,27 @@ function changePage() {
     const currentPage = window.location.pathname;
     let targetPage;
     
-    if (currentPage.endsWith('programme.html')) {
-        // Vérifier quel bouton a été cliqué
-        const clickedBtn = event.target.closest('button');
+    // Déterminer la page cible
+    if (currentPage.includes('programme.html')) {
+        const clickedBtn = event?.target?.closest('button');
         if (clickedBtn && clickedBtn.id === 'menuBtn') {
             targetPage = 'menu.html';
         } else {
             targetPage = 'index.html';
         }
-    } else if (currentPage.endsWith('menu.html')) {
+    } else if (currentPage.includes('menu.html')) {
         targetPage = 'programme.html';
-    } else if (currentPage.endsWith('index.html')) {
+    } else {
+        // Par défaut (index.html ou page racine)
         targetPage = 'programme.html';
     }
     
     if (targetPage) {
         document.body.classList.add('fade-out');
         setTimeout(() => {
-            window.location.href = targetPage;
+            // Utiliser un chemin relatif qui fonctionne partout
+            const baseUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+            window.location.href = baseUrl + targetPage;
         }, 300);
     }
 }
