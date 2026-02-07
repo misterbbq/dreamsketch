@@ -79,7 +79,7 @@ function updateTimer() {
         if (!timerElement) return;
 
         const now = new Date();
-        const targetDate = new Date('2026-02-07T10:38:07');
+        const targetDate = new Date('2026-02-07T10:40:07');
         let diff = targetDate - now;
         
         if (diff > 0) {
