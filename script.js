@@ -32,7 +32,7 @@ const phrases = [
     
     "Heureux tous les deux, nous irons jusqu'aux cieux",
     
-    "Claire, je t'aime du plus profond de mon coeur ❤️",
+    "Je t'aime du plus profond de mon coeur ❤️",
     
     "Bisou, mon oiseau de paradis",
     
