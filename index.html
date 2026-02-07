@@ -6,21 +6,25 @@
     <meta name="description" content="Générateur de petits mots doux et romantiques pour exprimer votre amour">
     <title> Mots Doux </title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="as-coeur-balTransparent.png">
+    <link rel="icon" type="image/png" href="as-coeur.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="hearts-container" id="hearts"></div>
     
+    <div class="hearts-container" id="hearts"></div>
+        
     <button class="theme-toggle" id="themeToggle" aria-label="Basculer le mode sombre">
         <span class="icon-sun">☀️</span>
         <span class="icon-moon">🌙</span>
     </button>
 
-    <main class="container">
+        
+
+    <main id="generator" class="container" style="display: block;">
         <header>
+            <div id="timer" class="timer">Temps restant : ...</div>
             <h1>💕 Mots Doux</h1>
             <p class="subtitle">Un petit mot d'amour pour illuminer ta journée</p>
         </header>
@@ -37,6 +41,7 @@
                 <span id="copyIcon">📋</span> <span id="copyText">Copier</span>
             </button>
         </div>
+        
     </main>
 
     <footer>

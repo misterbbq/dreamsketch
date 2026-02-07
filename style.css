@@ -51,9 +51,13 @@ body {
     justify-content: center;
     padding: 2rem;
     overflow-x: hidden;
-    transition: background 0.4s ease, color 0.4s ease;
+    opacity: 1;
+    transition: background 0.4s ease, color 0.4s ease, opacity 0.3s ease;
 }
 
+body.fade-out{
+    opacity: 0;
+}
 /* Container des cœurs animés */
 .hearts-container {
     position: fixed;
@@ -130,6 +134,24 @@ body {
     max-width: 600px;
     width: 100%;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+}
+.container2 {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding-top: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1.5rem;
+    box-shadow: 0 10px 40px var(--card-shadow);
+    margin-bottom: 2rem;
+    min-height: 150px;
+    display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-items: center;
+    text-align: center;
+    justify-content: top;
     z-index: 1;
 }
 
@@ -147,6 +169,7 @@ h1 {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 0.5rem;
+    margin-top: 0rem;
 }
 
 .subtitle {
@@ -154,7 +177,12 @@ h1 {
     color: var(--text-secondary);
     font-weight: 300;
 }
-
+.timer{
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
 /* Carte de phrase */
 .phrase-card {
     background: var(--card-bg);
@@ -238,6 +266,47 @@ h1 {
     color: white;
 }
 
+
+
+/* Programme */
+h2 {
+    font-family: cursive;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+.liste {
+    list-style: none;
+    font-family: cursive;
+    line-height: 1.9rem;
+    padding: 0;
+    margin-top: 0.7rem;
+    margin-bottom: 1rem;
+    /*font-size: 1rem;*/
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.section-title {
+    font-style: italic;
+    font-weight: 200;
+    font-size: 1rem;
+}
+.section-txt {
+    font-weight: normal;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.programme-details {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+
+
 /* Footer */
 footer {
     position: fixed;
@@ -250,7 +319,7 @@ footer {
 /* Responsive */
 @media (max-width: 600px) {
     h1 {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
     
     .phrase {

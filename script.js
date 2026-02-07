@@ -68,6 +68,56 @@ const phrases = [
 ];
 
 // ====================================
+// Timer
+// ====================================
+
+function updateTimer() {
+    setInterval(() => {
+        const timerElement = document.getElementById('timer');
+        
+        // Si l'élément timer n'existe pas sur cette page, on arrête
+        if (!timerElement) return;
+
+        const now = new Date();
+        const targetDate = new Date('2026-02-14T17:15:07');
+        let diff = targetDate - now;
+        
+        if (diff > 0) {
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            if (days > 0) {
+                if (days === 1) {
+                    timerElement.textContent = `Temps restant : Plus qu'${days} jour !`;
+                } else {
+                    timerElement.textContent = `Temps restant : Plus que ${days} jours !`;
+                }
+            } else if(hours > 0) {
+                if (hours === 1) {
+                    timerElement.textContent = `Temps restant : Il reste qu'${hours} heure !`;
+                } else {
+                    timerElement.textContent = `Temps restant : Il reste que ${hours} heures !`;
+                }
+            } else if(minutes > 0) {
+                if (minutes === 1) {
+                    timerElement.textContent = `Temps restant : C'est bientoooot ! Il reste qu'${minutes} minute !!!`;
+                } else {
+                timerElement.textContent = `Temps restant : C'est bientoooot ! Dans ${minutes} minutes !!! `;
+                }
+            } else {
+                timerElement.textContent = `Temps restant : ${seconds} !`;
+            }
+        } else {
+            timerElement.textContent = `C'est le moment !!! 💕`;
+            changePage();
+        }
+    }, 1000);
+}
+
+
+// ====================================
 // Variables et éléments DOM
 // ====================================
 const phraseElement = document.getElementById('phrase');
@@ -77,6 +127,9 @@ const copyIcon = document.getElementById('copyIcon');
 const copyText = document.getElementById('copyText');
 const themeToggle = document.getElementById('themeToggle');
 const heartsContainer = document.getElementById('hearts');
+const menuBtn = document.getElementById('menuBtn');
+const menuBackBtn = document.getElementById('menuBackBtn');
+const pageTitle = document.getElementById('page');
 
 let lastPhraseIndex = -1;
 
@@ -94,6 +147,36 @@ function initTheme() {
     }
 }
 
+function changePage() {
+    const currentPage = window.location.pathname;
+    let targetPage;
+    
+    if (currentPage.endsWith('programme.html')) {
+        // Vérifier quel bouton a été cliqué
+        const clickedBtn = event.target.closest('button');
+        if (clickedBtn && clickedBtn.id === 'menuBtn') {
+            targetPage = 'menu.html';
+        } else {
+            targetPage = 'index.html';
+        }
+    } else if (currentPage.endsWith('menu.html')) {
+        targetPage = 'programme.html';
+    } else if (currentPage.endsWith('index.html')) {
+        targetPage = 'programme.html';
+    }
+    
+    if (targetPage) {
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+            window.location.href = targetPage;
+        }, 300);
+    }
+}
+
+// ====================================
+// Toggle thème, générateur et programme
+// ====================================
+
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -101,6 +184,7 @@ function toggleTheme() {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
 }
+
 
 // ====================================
 // Génération de phrases
@@ -201,11 +285,27 @@ document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initHearts();
     
-    // Générer une première phrase
-    generatePhrase();
+    // Générer une première phrase seulement si on est sur la page avec le générateur
+    const phraseElement = document.getElementById('phrase');
+    const generateBtn = document.getElementById('generateBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const menuBackBtn = document.getElementById('menuBackBtn');
+    
+    // Toujours lancer le timer
+    updateTimer();
+    
+    // Initialiser le générateur seulement si les éléments existent
+    if (phraseElement && generateBtn) {
+        generatePhrase();
+        generateBtn.addEventListener('click', generatePhrase);
+    }
+    
+    if (copyBtn) {
+        copyBtn.addEventListener('click', copyPhrase);
+    }
     
     // Event listeners
-    generateBtn.addEventListener('click', generatePhrase);
-    copyBtn.addEventListener('click', copyPhrase);
-    themeToggle.addEventListener('click', toggleTheme);
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (menuBackBtn) menuBackBtn.addEventListener('click', changePage);
+    if (menuBtn) menuBtn.addEventListener('click', changePage);
 });
