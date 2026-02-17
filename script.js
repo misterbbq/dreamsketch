@@ -148,13 +148,13 @@ function initTheme() {
     }
 }
 
-function changePage() {
+function changePage(event) {
     const currentPage = window.location.pathname;
     let targetPage;
+    const clickedBtn = event?.target?.closest('button');
     
     // Déterminer la page cible
     if (currentPage.includes('programme.html')) {
-        const clickedBtn = event?.target?.closest('button');
         if (clickedBtn && clickedBtn.id === 'menuBtn') {
             targetPage = 'menu.html';
         } else {
@@ -162,10 +162,10 @@ function changePage() {
         }
     } else if (currentPage.includes('menu.html')) {
         targetPage = 'programme.html';
-    } else if (currentPage.includes('index.html') && clickedBtn.id === 'prgrmBtn') {
-        // Par défaut (index.html ou page racine)
+    } else if (currentPage.includes('index.html') && clickedBtn && clickedBtn.id === 'prgrmBtn') {
         targetPage = 'programme.html';
     } else {
+        // Par défaut (index.html ou page racine)
         targetPage = 'index.html';
     }
     
