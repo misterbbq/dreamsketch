@@ -71,7 +71,7 @@ const phrases = [
 // Timer
 // ====================================
 
-function updateTimer() {
+/*function updateTimer() {
     setInterval(() => {
         const timerElement = document.getElementById('timer');
         
@@ -79,7 +79,7 @@ function updateTimer() {
         if (!timerElement) return;
 
         const now = new Date();
-        const targetDate = new Date('2026-02-14T17:35:07');
+        const targetDate = new Date('2026-02-07T10:53:07');
         let diff = targetDate - now;
         
         if (diff > 0) {
@@ -115,7 +115,7 @@ function updateTimer() {
         }
     }, 1000);
 }
-
+*/
 
 // ====================================
 // Variables et éléments DOM
@@ -129,7 +129,8 @@ const themeToggle = document.getElementById('themeToggle');
 const heartsContainer = document.getElementById('hearts');
 const menuBtn = document.getElementById('menuBtn');
 const menuBackBtn = document.getElementById('menuBackBtn');
-const pageTitle = document.getElementById('page');
+const prgrmBtn = document.getElementById('prgrmBtn');
+//const pageTitle = document.getElementById('page');
 
 let lastPhraseIndex = -1;
 
@@ -161,9 +162,11 @@ function changePage() {
         }
     } else if (currentPage.includes('menu.html')) {
         targetPage = 'programme.html';
-    } else {
+    } else if (currentPage.includes('index.html') && clickedBtn.id === 'prgrmBtn') {
         // Par défaut (index.html ou page racine)
         targetPage = 'programme.html';
+    } else {
+        targetPage = 'index.html';
     }
     
     if (targetPage) {
@@ -295,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBackBtn = document.getElementById('menuBackBtn');
     
     // Toujours lancer le timer
-    updateTimer();
+    // updateTimer();
     
     // Initialiser le générateur seulement si les éléments existent
     if (phraseElement && generateBtn) {
@@ -311,4 +314,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
     if (menuBackBtn) menuBackBtn.addEventListener('click', changePage);
     if (menuBtn) menuBtn.addEventListener('click', changePage);
+    if (prgrmBtn) prgrmBtn.addEventListener('click', changePage);
 });
