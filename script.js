@@ -71,7 +71,7 @@ const phrases = [
 // Timer
 // ====================================
 
-/*function updateTimer() {
+function updateTimer() {
     setInterval(() => {
         const timerElement = document.getElementById('timer');
         
@@ -79,7 +79,7 @@ const phrases = [
         if (!timerElement) return;
 
         const now = new Date();
-        const targetDate = new Date('2026-02-07T10:53:07');
+        const targetDate = new Date('2026-03-27T19:12:07');
         let diff = targetDate - now;
         
         if (diff > 0) {
@@ -115,7 +115,7 @@ const phrases = [
         }
     }, 1000);
 }
-*/
+
 
 // ====================================
 // Variables et éléments DOM
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBackBtn = document.getElementById('menuBackBtn');
     
     // Toujours lancer le timer
-    // updateTimer();
+    updateTimer();
     
     // Initialiser le générateur seulement si les éléments existent
     if (phraseElement && generateBtn) {
