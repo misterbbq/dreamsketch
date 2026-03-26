@@ -71,6 +71,7 @@ const phrases = [
 // Timer
 // ====================================
 
+
 function updateTimer() {
     setInterval(() => {
         const timerElement = document.getElementById('timer');
@@ -79,8 +80,8 @@ function updateTimer() {
         if (!timerElement) return;
 
         const now = new Date();
-        const targetDate = new Date('2026-03-27T19:12:07');
-        let diff = targetDate - now;
+        const targetDate = new Date('2026-03-27T19:42:07'); //Format ISO 8601 : 'YYYY-MM-DDTHH:mm:ss'
+        diff = targetDate - now;
         
         if (diff > 0) {
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -130,8 +131,10 @@ const heartsContainer = document.getElementById('hearts');
 const menuBtn = document.getElementById('menuBtn');
 const menuBackBtn = document.getElementById('menuBackBtn');
 const prgrmBtn = document.getElementById('prgrmBtn');
+
 //const pageTitle = document.getElementById('page');
 
+let diff; // Variable globale pour stocker la différence de temps
 let lastPhraseIndex = -1;
 
 // ====================================
@@ -163,7 +166,11 @@ function changePage(event) {
     } else if (currentPage.includes('menu.html')) {
         targetPage = 'programme.html';
     } else if (currentPage.includes('index.html') && clickedBtn && clickedBtn.id === 'prgrmBtn') {
+         if (diff > 0) {
+            showToast("Malice à venir...😏");
+        } else {
         targetPage = 'programme.html';
+        }
     } else {
         // Par défaut (index.html ou page racine)
         targetPage = 'index.html';
@@ -191,6 +198,18 @@ function toggleTheme() {
     localStorage.setItem('theme', newTheme);
 }
 
+// ====================================
+// Toast de bas de page
+// ====================================
+
+let toastTimeout;
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.innerText = message;
+    toast.classList.add("show");
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove("show"), 2500); 
+}
 
 // ====================================
 // Génération de phrases
