@@ -112,7 +112,7 @@ function updateTimer() {
             }
         } else {
             timerElement.textContent = `C'est le moment !!! 💕`;
-            changePage();
+            //changePage();
         }
     }, 1000);
 }
