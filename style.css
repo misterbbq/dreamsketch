@@ -359,13 +359,14 @@ footer {
         padding: 0.9rem 1.5rem;
         font-size: 1rem;
     }
-    .timer {
-        font-size: 1rem;
-    }
+
     .theme-toggle {
         top: 1rem;
         right: 1rem;
         width: 45px;
         height: 45px;
+    }
+    .timer {
+        font-size: 0.5rem;
     }
 }
