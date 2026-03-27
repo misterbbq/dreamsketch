@@ -80,7 +80,7 @@ function updateTimer() {
         if (!timerElement) return;
 
         const now = new Date();
-        const targetDate = new Date('2026-03-27T19:42:07'); //Format ISO 8601 : 'YYYY-MM-DDTHH:mm:ss'
+        const targetDate = new Date('2026-03-27T20:00:07'); //Format ISO 8601 : 'YYYY-MM-DDTHH:mm:ss'
         diff = targetDate - now;
         
         if (diff > 0) {
