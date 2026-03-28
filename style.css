@@ -78,6 +78,16 @@ body.fade-out{
     animation: floatUp linear infinite;
 }
 
+.heart.big {
+    bottom: -250px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.heart.big.visible {
+    opacity: 0.5;
+}
+
 @keyframes floatUp {
     0% {
         transform: translateY(0) rotate(0deg);
@@ -325,6 +335,7 @@ h2 {
     font-size: 1rem;
     transition: opacity 0.5s ease, visibility 0.5s ease;
     backdrop-filter: blur(4px);
+    cursor: pointer;
 }
 #toast.show {
     visibility: visible;
@@ -359,13 +370,14 @@ footer {
         padding: 0.9rem 1.5rem;
         font-size: 1rem;
     }
-
+    
     .theme-toggle {
         top: 1rem;
         right: 1rem;
         width: 45px;
         height: 45px;
     }
+
     .timer {
         font-size: 1.1rem;
     }
