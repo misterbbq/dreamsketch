@@ -1,6 +1,7 @@
 // ====================================
 // PHRASES - Ajoutez vos phrases ici !
 // ====================================
+
 const phrases = [
     "Tu es la plus belle chose qui me soit arrivée.",
     "Mon cœur bat plus fort à chaque fois que je pense à toi.",
@@ -71,7 +72,7 @@ const phrases = [
 // Timer
 // ====================================
 
-
+/*
 function updateTimer() {
     setInterval(() => {
         const timerElement = document.getElementById('timer');
@@ -80,7 +81,7 @@ function updateTimer() {
         if (!timerElement) return;
 
         const now = new Date();
-        const targetDate = new Date('2026-03-27T20:00:07'); //Format ISO 8601 : 'YYYY-MM-DDTHH:mm:ss'
+        const targetDate = new Date('2026-05-29T15:42:07'); //Format ISO 8601 : 'YYYY-MM-DDTHH:mm:ss'
         diff = targetDate - now;
         
         if (diff > 0) {
@@ -116,7 +117,7 @@ function updateTimer() {
         }
     }, 1000);
 }
-
+*/
 
 // ====================================
 // Variables et éléments DOM
@@ -131,11 +132,13 @@ const heartsContainer = document.getElementById('hearts');
 const menuBtn = document.getElementById('menuBtn');
 const menuBackBtn = document.getElementById('menuBackBtn');
 const prgrmBtn = document.getElementById('prgrmBtn');
+const toast = document.getElementById("toast");
 
 //const pageTitle = document.getElementById('page');
 
-let diff; // Variable globale pour stocker la différence de temps
+let diff = 1; // Variable globale pour stocker la différence de temps
 let lastPhraseIndex = -1;
+let sizeOn = false;
 
 // ====================================
 // Gestion du thème
@@ -166,10 +169,10 @@ function changePage(event) {
     } else if (currentPage.includes('menu.html')) {
         targetPage = 'programme.html';
     } else if (currentPage.includes('index.html') && clickedBtn && clickedBtn.id === 'prgrmBtn') {
-         if (diff > 0) {
+        if (diff !== 0) {
             showToast("Malice à venir...😏");
         } else {
-        targetPage = 'programme.html';
+            targetPage = 'programme.html';
         }
     } else {
         // Par défaut (index.html ou page racine)
@@ -204,7 +207,6 @@ function toggleTheme() {
 
 let toastTimeout;
 function showToast(message) {
-    const toast = document.getElementById("toast");
     toast.innerText = message;
     toast.classList.add("show");
     clearTimeout(toastTimeout);
@@ -274,24 +276,37 @@ function createHeart() {
     heart.classList.add('heart');
     heart.innerHTML = '❤';
     
-    // Position et taille aléatoires
-    const size = Math.random() * 20 + 10;
+    let size = 0;
+    if (sizeOn){
+        size = Math.random() * 200 + 10;
+        heart.classList.add('big'); // ← classe spéciale grands cœurs
+    } else {
+        size = Math.random() * 20 + 10;
+    }
     const left = Math.random() * 100;
     const duration = Math.random() * 10 + 10;
     const delay = Math.random() * 5;
-    
+
     heart.style.left = `${left}%`;
     heart.style.fontSize = `${size}px`;
     heart.style.animationDuration = `${duration}s`;
     heart.style.animationDelay = `${delay}s`;
     
     heartsContainer.appendChild(heart);
-    
-    // Supprimer le cœur après l'animation
+
+    // Apparition douce uniquement pour les grands cœurs
+    if (sizeOn) {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                heart.classList.add('visible');
+            });
+        });
+    }
+
     setTimeout(() => {
         heart.remove();
     }, (duration + delay) * 1000);
-}
+} 
 
 function initHearts() {
     // Créer quelques cœurs au démarrage
@@ -301,6 +316,14 @@ function initHearts() {
     
     // Créer de nouveaux cœurs périodiquement
     setInterval(createHeart, 2000);
+}
+
+function BigH() {
+    sizeOn = true;
+    setTimeout(() => {
+        sizeOn = false;
+    }, 6000);
+    
 }
 
 // ====================================
@@ -316,8 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyBtn = document.getElementById('copyBtn');
     const menuBackBtn = document.getElementById('menuBackBtn');
     
+    
     // Toujours lancer le timer
-    updateTimer();
+    //updateTimer();
     
     // Initialiser le générateur seulement si les éléments existent
     if (phraseElement && generateBtn) {
@@ -334,4 +358,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBackBtn) menuBackBtn.addEventListener('click', changePage);
     if (menuBtn) menuBtn.addEventListener('click', changePage);
     if (prgrmBtn) prgrmBtn.addEventListener('click', changePage);
+    if (toast) toast.addEventListener('click',BigH)
 });
