@@ -62,6 +62,8 @@ const phrases = [
     "Je pense très fort à toi, Claire que j'aime de tout mon coeur !",
 
     "Je t'aime"
+
+    "Quelle chance d'être ton amoureux ! 😍"
     
 
     // Ajoutez vos propres phrases ci-dessous :
