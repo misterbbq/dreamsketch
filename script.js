@@ -62,9 +62,8 @@ const phrases = [
     "Je pense très fort à toi, Claire que j'aime de tout mon coeur !",
 
     "Je t'aime",
-
-    "Quelle chance d'être ton amoureux ! 😍"
     
+    "Quelle chance d'être ton amoureux ! 😍"
 
     // Ajoutez vos propres phrases ci-dessous :
     
@@ -340,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generateBtn');
     const copyBtn = document.getElementById('copyBtn');
     const menuBackBtn = document.getElementById('menuBackBtn');
-    
+    const toast = document.getElementById("toast");
     
     // Toujours lancer le timer
     //updateTimer();
