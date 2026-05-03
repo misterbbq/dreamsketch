@@ -73,18 +73,17 @@ const phrases = [
 // Timer
 // ====================================
 
-/*
 function updateTimer() {
     setInterval(() => {
         const timerElement = document.getElementById('timer');
-        
+
+        const now = new Date();
+        const targetDate = new Date('2026-05-07T21:37:04'); //Format ISO 8601 : 'YYYY-MM-DDTHH:mm:ss'
+        diff = targetDate - now;
+
         // Si l'élément timer n'existe pas sur cette page, on arrête
         if (!timerElement) return;
 
-        const now = new Date();
-        const targetDate = new Date('2026-05-29T15:42:07'); //Format ISO 8601 : 'YYYY-MM-DDTHH:mm:ss'
-        diff = targetDate - now;
-        
         if (diff > 0) {
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
@@ -118,7 +117,7 @@ function updateTimer() {
         }
     }, 1000);
 }
-*/
+
 
 // ====================================
 // Variables et éléments DOM
@@ -137,7 +136,7 @@ const toast = document.getElementById("toast");
 
 //const pageTitle = document.getElementById('page');
 
-let diff = 1; // Variable globale pour stocker la différence de temps
+let diff; // Variable globale pour stocker la différence de temps
 let lastPhraseIndex = -1;
 let sizeOn = false;
 
@@ -162,19 +161,19 @@ function changePage(event) {
     
     // Déterminer la page cible
     if (currentPage.includes('programme.html')) {
-        if (clickedBtn && clickedBtn.id === 'menuBtn') {
+        if (clickedBtn && clickedBtn.id === 'menuBtn' && diff <= 0) {
             targetPage = 'menu.html';
         } else {
-            targetPage = 'index.html';
+            showToast("Malice à venir...😏");
         }
     } else if (currentPage.includes('menu.html')) {
         targetPage = 'programme.html';
     } else if (currentPage.includes('index.html') && clickedBtn && clickedBtn.id === 'prgrmBtn') {
-        if (diff !== 0) {
+        /*if (diff >= 0) {
             showToast("Malice à venir...😏");
-        } else {
+        } else {*/
             targetPage = 'programme.html';
-        }
+        //}
     } else {
         // Par défaut (index.html ou page racine)
         targetPage = 'index.html';
@@ -342,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toast = document.getElementById("toast");
     
     // Toujours lancer le timer
-    //updateTimer();
+    updateTimer();
     
     // Initialiser le générateur seulement si les éléments existent
     if (phraseElement && generateBtn) {
