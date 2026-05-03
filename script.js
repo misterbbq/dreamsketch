@@ -80,22 +80,36 @@ const programmes = {
             { heure: "23 h 01", activite: "Câlinnnns !!!" },
         ]
     },
-    pendant: {
+    pendant84: {
         date: "8 mai 2026",
         items: [
             { heure: "9 h 35",  activite: "Réveil tout doux" },
             { heure: "12 h 30", activite: "Dejeuner CW" },
             { heure: "16 h 30", activite: "Retour en casita" },
             { heure: "17 h 00", activite: "Trampoline Park ?" },
-            { heure: "19 h 30", activite: "Diner en amoureux" },
+            { heure: "19 h 30", activite: "Dîner en amoureux" },
             { heure: "20 h 30", activite: "Petit film" },
             { heure: "22 h 30", activite: "Dodo câlins" },
         ]
     },
-    apres: {
+    pendant94: {
         date: "9 mai 2026",
         items: [
             { heure: "9 h 35", activite: "Réveil en douceur" },
+            { heure: "11 h 30", activite: "Activité surprise ✨" },
+            { heure: "12 h 45", activite: "Dejeuner au parc" },
+            { heure: "13 h 45", activite: "Parkour !" },
+            { heure: "16 h 00", activite: "Déplacement paillage" },
+            { heure: "19 h 30", activite: "Re Dîner en amoureux" },
+            { heure: "21 h 00", activite: "Sous la couverture" },
+            { heure: "21 h 01", activite: "Malice..." },
+            
+        ]
+    },
+    apres: {
+        date: "Après le 9 mai 2026",
+        items: [
+            { heure: "13 h 30", activite: "Escape game !" },
         ]
     }
 };
@@ -231,7 +245,9 @@ function updateProgramme() {
     if (diff > 0) {
         programme = programmes.avant;
     } else if (now.getDate() === 8 && now.getMonth() === 4) {
-        programme = programmes.pendant;
+        programme = programmes.pendant84;
+    } else if (now.getDate() === 9 && now.getMonth() === 4) {
+        programme = programmes.pendant94;
     } else {
         programme = programmes.apres;
     }
