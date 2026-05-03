@@ -127,6 +127,10 @@ body.fade-out{
     box-shadow: 0 6px 20px var(--card-shadow);
 }
 
+.icon-sun {
+    display: block;
+}
+
 .icon-moon {
     display: none;
 }
@@ -138,6 +142,15 @@ body.fade-out{
 [data-theme="light"] .icon-moon {
     display: block;
 }
+
+[data-theme="dark"] .icon-sun {
+    display: block;
+}
+
+[data-theme="dark"] .icon-moon {
+    display: none;
+}
+
 
 /* Container principal */
 .container {
@@ -323,7 +336,7 @@ h2 {
     min-width: flex-content;
     background: var(--btn-secondary-bg);
     background-color: var(--btn-primary-bg);
-    color: #fff;
+    color: var(--text-primary);
     border: 0.5px solid var(--btn-secondary-border);
     text-align: center;
     border-radius: 50px;

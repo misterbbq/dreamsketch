@@ -69,17 +69,62 @@ const phrases = [
     
 ];
 
+const programmes = {
+    avant: {
+        date: "7 mai 2026",
+        items: [
+            { heure: "19 h 00", activite: "Retrouvailles" },
+            { heure: "20 h 00", activite: "Concert !" },
+            { heure: "22 h 45", activite: "Retour en casita" },
+            { heure: "23 h 00", activite: "Mise sous couette" },
+            { heure: "23 h 01", activite: "Câlinnnns !!!" },
+        ]
+    },
+    pendant: {
+        date: "8 mai 2026",
+        items: [
+            { heure: "9 h 35",  activite: "Réveil tout doux" },
+            { heure: "12 h 30", activite: "Dejeuner CW" },
+            { heure: "16 h 30", activite: "Retour en casita" },
+            { heure: "17 h 00", activite: "Trampoline Park ?" },
+            { heure: "19 h 30", activite: "Diner en amoureux" },
+            { heure: "20 h 30", activite: "Petit film" },
+            { heure: "22 h 30", activite: "Dodo câlins" },
+        ]
+    },
+    apres: {
+        date: "9 mai 2026",
+        items: [
+            { heure: "9 h 35", activite: "Réveil en douceur" },
+        ]
+    }
+};
+
+// ====================================
+// Variables et éléments DOM
+// ====================================
+const toast = document.getElementById("toast");
+
+let diff; // Variable globale pour stocker la différence de temps
+let lastPhraseIndex = -1;
+let sizeOn = false;
+let now = new Date();
+
+//const pageTitle = document.getElementById('page');
+
+
+
 // ====================================
 // Timer
 // ====================================
 
 function updateTimer() {
+    const timerElement = document.getElementById('timer');
+    const now = new Date();
+    const targetDate = new Date('2026-05-07T21:37:04'); //Format ISO 8601 : 'YYYY-MM-DDTHH:mm:ss'
+    diff = targetDate - now;
+    //console.log(diff);
     setInterval(() => {
-        const timerElement = document.getElementById('timer');
-
-        const now = new Date();
-        const targetDate = new Date('2026-05-07T21:37:04'); //Format ISO 8601 : 'YYYY-MM-DDTHH:mm:ss'
-        diff = targetDate - now;
 
         // Si l'élément timer n'existe pas sur cette page, on arrête
         if (!timerElement) return;
@@ -119,26 +164,6 @@ function updateTimer() {
 }
 
 
-// ====================================
-// Variables et éléments DOM
-// ====================================
-const phraseElement = document.getElementById('phrase');
-const generateBtn = document.getElementById('generateBtn');
-const copyBtn = document.getElementById('copyBtn');
-const copyIcon = document.getElementById('copyIcon');
-const copyText = document.getElementById('copyText');
-const themeToggle = document.getElementById('themeToggle');
-const heartsContainer = document.getElementById('hearts');
-const menuBtn = document.getElementById('menuBtn');
-const menuBackBtn = document.getElementById('menuBackBtn');
-const prgrmBtn = document.getElementById('prgrmBtn');
-const toast = document.getElementById("toast");
-
-//const pageTitle = document.getElementById('page');
-
-let diff; // Variable globale pour stocker la différence de temps
-let lastPhraseIndex = -1;
-let sizeOn = false;
 
 // ====================================
 // Gestion du thème
@@ -161,10 +186,14 @@ function changePage(event) {
     
     // Déterminer la page cible
     if (currentPage.includes('programme.html')) {
-        if (clickedBtn && clickedBtn.id === 'menuBtn' && diff <= 0) {
-            targetPage = 'menu.html';
-        } else {
-            showToast("Malice à venir...😏");
+        if (clickedBtn && clickedBtn.id === 'menuBtn') {
+            if (diff >= 0) {
+                showToast("Malice à venir...😏");
+            } else {
+                targetPage = 'menu.html';
+            }
+        } else if (clickedBtn && clickedBtn.id === 'prgrmBackBtn') {
+            targetPage = 'index.html';
         }
     } else if (currentPage.includes('menu.html')) {
         targetPage = 'programme.html';
@@ -188,6 +217,36 @@ function changePage(event) {
         }, 300);
     }
 }
+
+// ====================================
+// Adaptation du programme en fonction de la date
+// ====================================
+function updateProgramme() {
+    const date = document.getElementById('date');
+    const programmeList = document.getElementById('programme-list');
+
+    if (!programmeList) return;
+
+    let programme;
+    if (diff > 0) {
+        programme = programmes.avant;
+    } else if (now.getDate() === 8 && now.getMonth() === 4) {
+        programme = programmes.pendant;
+    } else {
+        programme = programmes.apres;
+    }
+
+    if (date) date.textContent = programme.date;
+
+    const html = programme.items.map(item => `
+        <li class="section-title">~~ ${item.heure} ~~</li>
+        <li class="section-txt">${item.activite}</li>
+    `).join('');
+
+    programmeList.innerHTML = `<ul class="liste">${html}</ul>`;
+}
+
+
 
 // ====================================
 // Toggle thème, générateur et programme
@@ -217,6 +276,7 @@ function showToast(message) {
 // Génération de phrases
 // ====================================
 function generatePhrase() {
+    const phraseElement = document.getElementById('phrase');
     if (phrases.length === 0) {
         phraseElement.textContent = "Ajoutez vos phrases dans le fichier script.js !";
         return;
@@ -248,6 +308,10 @@ function generatePhrase() {
 // Copie dans le presse-papier
 // ====================================
 async function copyPhrase() {
+    const phraseElement = document.getElementById('phrase');
+    const copyBtn = document.getElementById('copyBtn');
+    const copyIcon = document.getElementById('copyIcon');
+    const copyText = document.getElementById('copyText');
     const text = phraseElement.textContent;
     
     try {
@@ -272,7 +336,9 @@ async function copyPhrase() {
 // Animation des cœurs
 // ====================================
 function createHeart() {
+    const heartsContainer = document.getElementById('hearts');
     const heart = document.createElement('div');
+
     heart.classList.add('heart');
     heart.innerHTML = '❤';
     
@@ -330,18 +396,25 @@ function BigH() {
 // Initialisation
 // ====================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Générer une première phrase seulement si on est sur la page avec le générateur
+    const themeToggle = document.getElementById('themeToggle'); 
+    const menuBtn = document.getElementById('menuBtn');         
+    const prgrmBtn = document.getElementById('prgrmBtn');       
+    const menuBackBtn = document.getElementById('menuBackBtn');
+    const prgrmBackBtn = document.getElementById('prgrmBackBtn');
+    const generateBtn = document.getElementById('generateBtn');
+    const phraseElement = document.getElementById('phrase');
+    const copyBtn = document.getElementById('copyBtn');
+    
+
     initTheme();
     initHearts();
-    
-    // Générer une première phrase seulement si on est sur la page avec le générateur
-    const phraseElement = document.getElementById('phrase');
-    const generateBtn = document.getElementById('generateBtn');
-    const copyBtn = document.getElementById('copyBtn');
-    const menuBackBtn = document.getElementById('menuBackBtn');
-    const toast = document.getElementById("toast");
-    
     // Toujours lancer le timer
     updateTimer();
+
+    if (window.location.pathname.includes('programme.html')) {
+        updateProgramme();
+    }
     
     // Initialiser le générateur seulement si les éléments existent
     if (phraseElement && generateBtn) {
@@ -349,13 +422,11 @@ document.addEventListener('DOMContentLoaded', () => {
         generateBtn.addEventListener('click', generatePhrase);
     }
     
-    if (copyBtn) {
-        copyBtn.addEventListener('click', copyPhrase);
-    }
-    
     // Event listeners
+    if (copyBtn) copyBtn.addEventListener('click', copyPhrase);
     if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
     if (menuBackBtn) menuBackBtn.addEventListener('click', changePage);
+    if (prgrmBackBtn) prgrmBackBtn.addEventListener('click', changePage);
     if (menuBtn) menuBtn.addEventListener('click', changePage);
     if (prgrmBtn) prgrmBtn.addEventListener('click', changePage);
     if (toast) toast.addEventListener('click',BigH)
