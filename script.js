@@ -63,7 +63,11 @@ const phrases = [
 
     "Je t'aime",
     
-    "Quelle chance d'être ton amoureux ! 😍"
+    "Quelle chance d'être ton amoureux ! 😍",
+
+    "Vivre avec toi est une des plus belles libertés"
+
+    
 
     // Ajoutez vos propres phrases ci-dessous :
     
