@@ -63,11 +63,7 @@ const phrases = [
 
     "Je t'aime",
     
-    "Quelle chance d'être ton amoureux ! 😍",
-
-    "Vivre avec toi est une des plus belles libertés"
-
-    
+    "Quelle chance d'être ton amoureux ! 😍"
 
     // Ajoutez vos propres phrases ci-dessous :
     
@@ -221,6 +217,8 @@ function changePage(event) {
         } else {*/
             targetPage = 'programme.html';
         //}
+    } else if (currentPage.includes('index.html') && clickedBtn && clickedBtn.id === 'avBtn') {
+            targetPage = 'aventure.html';
     } else {
         // Par défaut (index.html ou page racine)
         targetPage = 'index.html';
@@ -425,6 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generateBtn');
     const phraseElement = document.getElementById('phrase');
     const copyBtn = document.getElementById('copyBtn');
+    const avBtn = document.getElementById('avBtn');
     
 
     initTheme();
@@ -449,5 +448,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prgrmBackBtn) prgrmBackBtn.addEventListener('click', changePage);
     if (menuBtn) menuBtn.addEventListener('click', changePage);
     if (prgrmBtn) prgrmBtn.addEventListener('click', changePage);
+    if (avBtn) avBtn.addEventListener('click', changePage);
     if (toast) toast.addEventListener('click',BigH)
 });
