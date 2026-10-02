@@ -178,6 +178,21 @@ body.fade-out{
     z-index: 1;
 }
 
+.containerMap {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 40px var(--card-shadow);
+    margin-bottom: 2rem;
+    min-height: 150px;
+    display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-items: center;
+    text-align: center;
+    justify-content: top;
+    z-index: 1;
+}
+
 /* Header */
 header {
     margin-bottom: 2.5rem;
@@ -196,6 +211,7 @@ h1 {
 }
 
 .subtitle {
+    margin-bottom: 1rem;
     font-size: 1.1rem;
     color: var(--text-secondary);
     font-weight: 300;

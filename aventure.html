@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Générateur de petits mots doux et romantiques pour exprimer votre amour">
+    <title> Map du fun </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 18 18'><text x='-3' y='16'>💕</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="hearts-container" id="hearts"></div>
+        
+    <button class="theme-toggle" id="themeToggle" aria-label="Basculer le mode sombre">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon">🌙</span>
+    </button>
+
+    <main id="programme" class="container2" style="display: block;">
+        <div>
+            <h1>On va où ???</h1>
+            <p class="subtitle" id="date">10 au 20 août 2027</p>
+        </div>
+        <div class="containerMap">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1Vmp1v0Aq9Roglq6Zmj2d4cwQQhTDSxY&hl=fr-FR&ehbc=2E312F" width="600" height="420"></iframe>
+        </div>
+        
+
+        <div class="buttons">
+            <button class="btn btn-secondary" id="prgrmBackBtn">
+                <span>🔙</span> Retour
+            </button>
+        </div>
+
+        
+    </main>
+
+    <footer>
+        <p>Fait par ton amoureux MB ❤️</p>
+    </footer>
+    
+    <div id="toast">Malice à venir...😏</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
