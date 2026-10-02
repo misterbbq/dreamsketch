@@ -191,6 +191,12 @@ body.fade-out{
     text-align: center;
     justify-content: top;
     z-index: 1;
+    
+}
+.containerMap iframe {
+    width: 640px; /* S'adapte toujours à la taille de l'écran */
+    height: 420px; /* Garde une hauteur fixe */
+    border: none; /* Supprime la bordure grise disgracieuse par défaut */
 }
 
 /* Header */
@@ -384,6 +390,9 @@ footer {
 
 /* Responsive */
 @media (max-width: 600px) {
+    .containerMap iframe{
+        width: 500px;
+    }
     h1 {
         font-size: 1.8rem;
     }
