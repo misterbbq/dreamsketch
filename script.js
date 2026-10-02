@@ -218,8 +218,7 @@ function changePage(event) {
         targetPage = 'programme.html';
         //}
     } else if (currentPage.includes('index.html') && clickedBtn && clickedBtn.id === 'avBtn') {
-            console.log("yes")
-            targetPage = 'aventure.html';
+        targetPage = 'aventure.html';
     } else {
         // Par défaut (index.html ou page racine)
         targetPage = 'index.html';
