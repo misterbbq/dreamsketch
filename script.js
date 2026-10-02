@@ -215,10 +215,10 @@ function changePage(event) {
         /*if (diff >= 0) {
             showToast("Malice à venir...😏");
         } else {*/
-            targetPage = 'programme.html';
+        targetPage = 'programme.html';
         //}
     } else if (currentPage.includes('index.html') && clickedBtn && clickedBtn.id === 'avBtn') {
-            print("yes")
+            console.log("yes")
             targetPage = 'aventure.html';
     } else {
         // Par défaut (index.html ou page racine)
