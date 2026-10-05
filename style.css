@@ -189,14 +189,19 @@ body.fade-out{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     align-items: center;
     text-align: center;
-    justify-content: top;
+    justify-content: center; /* "top" est invalide en flexbox, utilisez "flex-start" ou "center" */
     z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+    
     
 }
 .containerMap iframe {
-    width: 640px; /* S'adapte toujours à la taille de l'écran */
-    height: 420px; /* Garde une hauteur fixe */
-    border: none; /* Supprime la bordure grise disgracieuse par défaut */
+    width: 640px; /* La carte s'adaptera toujours à la largeur de .containerMap */
+    max-width: 800px; /* Optionnel : empêche la carte de devenir immense sur grand écran */
+    height: 420px; 
+    border: none; 
+    border-radius: 8px; /* Ajoute des bords arrondis à la carte pour s'accorder avec le conteneur */
 }
 
 /* Header */
@@ -390,8 +395,23 @@ footer {
 
 /* Responsive */
 @media (max-width: 600px) {
-    .containerMap iframe{
-        width: 500px;
+    .container2 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        min-height: 150px;
+    }
+    .containerMap {
+        padding: 1rem;
+        box-shadow: 0 10px 40px var(--card-shadow);
+        margin-bottom: 1.5rem;
+    
+    }
+    .containerMap iframe {
+        /* La largeur gérée par "width: 100%" au-dessus s'applique automatiquement */
+        width:100%;
+        height: 300px; /* On réduit uniquement la hauteur pour libérer de l'espace sur mobile */
     }
     h1 {
         font-size: 1.8rem;
